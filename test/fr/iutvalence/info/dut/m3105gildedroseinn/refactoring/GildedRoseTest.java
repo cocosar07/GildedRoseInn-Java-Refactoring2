@@ -12,27 +12,32 @@ import fr.iutvalence.info.dut.m3105.gildedroseinn.refactoring.Item;
 
 public class GildedRoseTest
 {
+	public static final Item ITEM_WITH_BOTH_POSITIVE_SELLIN_AND_QUALITY = new Item("+5 Dexterity Vest", 10, 20);
+	public static final Item ITEM_WITH_NEGATIVE_SELLIN_AND_POSITIVE_QUALITY = new Item("+5 Dexterity Vest", -1, 20);
+	
 	private Item item = null;
 	
 	@Test
 	public void updateAnItemShouldLowerItsQualityAndSellIn()
 	{
-		this.item = new Item("+5 Dexterity Vest", 10, 20);
+		int expectedQuality = ITEM_WITH_BOTH_POSITIVE_SELLIN_AND_QUALITY.getQuality()-1;
+		int expectedSellIn = ITEM_WITH_BOTH_POSITIVE_SELLIN_AND_QUALITY.getSellIn()-1;
 		
-		GildedRose.updateItem(this.item);
+		GildedRose.updateItem(ITEM_WITH_BOTH_POSITIVE_SELLIN_AND_QUALITY);
 		
-		assertEquals(item.getSellIn(), 9);
-		assertEquals(item.getQuality(), 19);
+		assertEquals(ITEM_WITH_BOTH_POSITIVE_SELLIN_AND_QUALITY.getSellIn(), expectedSellIn);
+		assertEquals(ITEM_WITH_BOTH_POSITIVE_SELLIN_AND_QUALITY.getQuality(), expectedQuality);
 	}
 	
 	@Test
 	public void updateAnItemWithANegativeSellInShouldLowerItsQualityByTwo()
 	{
-		this.item = new Item("+5 Dexterity Vest", -1, 20);
+		int expectedQuality = ITEM_WITH_NEGATIVE_SELLIN_AND_POSITIVE_QUALITY.getQuality()-2;
+		int expectedSellIn = ITEM_WITH_NEGATIVE_SELLIN_AND_POSITIVE_QUALITY.getSellIn()-1;
 		
-		GildedRose.updateItem(this.item);
+		GildedRose.updateItem(ITEM_WITH_NEGATIVE_SELLIN_AND_POSITIVE_QUALITY);
 		
-		assertEquals(item.getSellIn(), -2);
-		assertEquals(item.getQuality(), 18);
+		assertEquals(ITEM_WITH_NEGATIVE_SELLIN_AND_POSITIVE_QUALITY.getSellIn(), expectedSellIn);
+		assertEquals(ITEM_WITH_NEGATIVE_SELLIN_AND_POSITIVE_QUALITY.getQuality(), expectedQuality);
 	}
 }
