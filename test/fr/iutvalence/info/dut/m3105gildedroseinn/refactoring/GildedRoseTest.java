@@ -14,6 +14,7 @@ public class GildedRoseTest
 {
 	public static final Item ITEM_WITH_BOTH_POSITIVE_SELLIN_AND_QUALITY = new Item("+5 Dexterity Vest", 10, 20);
 	public static final Item ITEM_WITH_NEGATIVE_SELLIN_AND_POSITIVE_QUALITY = new Item("+5 Dexterity Vest", -1, 20);
+	public static final Item ITEM_WITH_NEGATIVE_SELLIN_AND_NULL_QUALITY = new Item("+5 Dexterity Vest", 10, 0);
 	
 	private Item item = null;
 	
@@ -39,5 +40,17 @@ public class GildedRoseTest
 		
 		assertEquals(ITEM_WITH_NEGATIVE_SELLIN_AND_POSITIVE_QUALITY.getSellIn(), expectedSellIn);
 		assertEquals(ITEM_WITH_NEGATIVE_SELLIN_AND_POSITIVE_QUALITY.getQuality(), expectedQuality);
+	}
+	
+	@Test
+	public void updateAnItemWithANullQualityShouldOnlyChangeItsSellIn()
+	{
+		int expectedQuality = ITEM_WITH_NEGATIVE_SELLIN_AND_NULL_QUALITY.getQuality();
+		int expectedSellIn = ITEM_WITH_NEGATIVE_SELLIN_AND_NULL_QUALITY.getSellIn()-1;
+		
+		GildedRose.updateItem(ITEM_WITH_NEGATIVE_SELLIN_AND_NULL_QUALITY);
+		
+		assertEquals(ITEM_WITH_NEGATIVE_SELLIN_AND_NULL_QUALITY.getSellIn(), expectedSellIn);
+		assertEquals(ITEM_WITH_NEGATIVE_SELLIN_AND_NULL_QUALITY.getQuality(), expectedQuality);
 	}
 }
