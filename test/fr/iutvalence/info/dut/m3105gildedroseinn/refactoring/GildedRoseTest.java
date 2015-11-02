@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.junit.Test;
+
 import fr.iutvalence.info.dut.m3105.gildedroseinn.refactoring.GildedRose;
 import fr.iutvalence.info.dut.m3105.gildedroseinn.refactoring.Item;
 
@@ -14,7 +15,7 @@ public class GildedRoseTest
 	private Item item = null;
 	
 	@Test
-	void updateAnItemShouldLowerItsQualityAndSellIn()
+	public void updateAnItemShouldLowerItsQualityAndSellIn()
 	{
 		this.item = new Item("+5 Dexterity Vest", 10, 20);
 		
