@@ -34,6 +34,9 @@ public class GildedRose
 		
 		if(item.getSellIn() < 0)
 			decreaseItemQuality(item);
+		
+		if(item.getQuality() < 0)
+			item.setQuality(0);
 	}
 
 	private static void decreaseItemQuality(Item item)
