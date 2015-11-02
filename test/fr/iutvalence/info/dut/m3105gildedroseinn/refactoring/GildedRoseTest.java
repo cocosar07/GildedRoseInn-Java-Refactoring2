@@ -24,4 +24,15 @@ public class GildedRoseTest
 		assertEquals(item.getSellIn(), 9);
 		assertEquals(item.getQuality(), 19);
 	}
+	
+	@Test
+	public void updateAnItemWithANegativeSellInShouldLowerItsQualityByTwo()
+	{
+		this.item = new Item("+5 Dexterity Vest", -1, 20);
+		
+		GildedRose.updateItem(this.item);
+		
+		assertEquals(item.getSellIn(), -2);
+		assertEquals(item.getQuality(), 18);
+	}
 }
