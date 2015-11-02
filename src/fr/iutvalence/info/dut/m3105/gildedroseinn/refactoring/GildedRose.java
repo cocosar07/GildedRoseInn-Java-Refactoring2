@@ -31,5 +31,8 @@ public class GildedRose
 	{
 		item.setSellIn(item.getSellIn() - 1);
 		item.setQuality(item.getQuality() - 1);
+		
+		if(item.getSellIn() < 0)
+			item.setQuality(item.getQuality() - 1);
 	}
 }
